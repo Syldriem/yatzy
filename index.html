@@ -1,0 +1,121 @@
+<html>
+	<head>
+		<title>Yatzy!</title>
+		<script src="app.js"></script>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+        <script>
+            const yatzy = new Yatzy();
+            function keep(element) {
+                if (element) {
+                    if (element.style.color === "red") {
+                        element.style.color = "black";
+                        return;
+                    }
+                    element.setAttribute("name", "keep");
+                    element.style.color = "red";
+                    let num = element.getAttribute("class");
+                    console.log(num);
+                    switch (num) {
+                        case "one":
+                            yatzy.dice.keep.push(1);
+                            console.log(yatzy.dice.keep);
+                            break;
+                        case "two":
+                            yatzy.dice.keep.push(2);
+                            console.log(yatzy.dice.keep);
+                            break;
+                        case "three":
+                            yatzy.dice.keep.push(3);
+                            console.log(yatzy.dice.keep);
+                            break;
+                        case "four":
+                            yatzy.dice.keep.push(4);
+                            console.log(yatzy.dice.keep);
+                            break;
+                        case "five":
+                            yatzy.dice.keep.push(5);
+                            console.log(yatzy.dice.keep);
+                            break;
+                        case "six":
+                            yatzy.dice.keep.push(6);
+                            console.log(yatzy.dice.keep);
+                            break;
+                    }
+                }
+            }
+        </script>
+		<p id="info"></p>
+		<div id="dices">
+            <div class="one" hidden onClick={keep(this)}></div>
+            <div class="two" hidden onClick={keep(this)}></div>
+            <div class="three" hidden onClick={keep(this)}></div>
+            <div class="four" hidden onClick={keep(this)}></div>
+            <div class="five" hidden onClick={keep(this)}></div>
+		</div>
+        <button id="roll" onClick={yatzy.dice.roll()}>Kasta</button>
+		<div id="protocol">
+			<table>
+				<tr>
+					<th></th><th>Spelare X</th>
+				</tr>
+				<tr>
+                    <th>Ettor ⚀</th><td><input id="1" value=0 onChange={yatzy.ones(value)}></td>
+				</tr>
+				<tr>
+                    <th>Tvåor ⚁</th><td><input id="2" value=0 onChange={yatzy.twos(value)}></td>
+				</tr>
+				<tr>
+                    <th>Treor ⚂</th><td><input id="3" value=0 onChange={yatzy.threes(value)}></td>
+				</tr>
+				<tr>
+                    <th>Fyror ⚃</th><td><input id="4" value=0 onChange={yatzy.fours(value)}></td>
+				</tr>
+				<tr>
+                    <th>Femor ⚄</th><td><input id="5" value=0 onChange={yatzy.fives(value)}></td>
+				</tr>
+				<tr>
+                    <th>Sexor ⚅</th><td><input id="6" value=0 onChange={yatzy.sixes(value)}></td>
+				</tr>
+				<tr>
+					<th>TOTAL</th><td><input id="total1" value=0></td>
+				</tr>
+				<tr>
+					<th>BONUS(50)</th><td><input id="bonus" value=0></td>
+				</tr>
+				<tr>
+                    <th>Par</th><td><input id="pair" value=0 onChange={yatzy.pair(value)}></td>
+				</tr>
+				<tr>
+                    <th>Tvåpar</th><td><input id="twopair" value=0 onChange={yatzy.pair(value)}><input value=0 onChange={yatzy.pair(value)}></td>
+				</tr>
+				<tr>
+                    <th>Triss</th><td><input id="threepair" value=0 onChange={yatzy.threeOfAKind(value)}></td>
+				</tr>
+				<tr>
+                    <th>Fyrtal</th><td><input id="four-of-a-kind" value=0 onChange={yatzy.fourOfAKind(value)}></td>
+				</tr>
+				<tr>
+                    <th>Kåk</th><td><input id="full-house" value="pair" onChange={yatzy.pair(value)}><input value="three pair" onChange={yatzy.threeOfAKind(value)}></td>
+				</tr>
+				<tr>
+                    <th>Liten stege</th><td><input id="small-straight" value=0 onChange={yatzy.smallStraight()}></td>
+				</tr>
+				<tr>
+                    <th>Stor stege</th><td><input id="large-straight" value=0 onChange={yatzy.largeStraight()}></td>
+				</tr>
+				<tr>
+                    <th>Chans</th><td><input id="chance" value=0 onChange={yatzy.chance()}></td>
+				</tr>
+				<tr>
+                    <th>YATZY(50)</th><td><input id="yatzy" value=0 onChange={yatzy.yatzy()}></td>
+				</tr>
+				<tr>
+                    <th>TOTAL</th><td><input id="total2" value=0></td>
+				</tr>
+			</table>
+		</div>
+		<p id="rules"><a href="https://www.spelayatzy.se/yatzy-spelregler/">Yatzy - Spelregler</a></p>
+	</body>
+</html>
